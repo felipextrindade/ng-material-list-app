@@ -20,13 +20,13 @@
                 </mat-option>
               </mat-select>
             </mat-form-field>
-          </mat-list-item>
-
-          <mat-list-item role="listitem">
-            <app-all-lists-table></app-all-lists-table>
-          </mat-list-item>
-
-        </mat-list>
-      </form>
-    </mat-card-content>
+          </mat-list-item>    
+          
+        <mat-list-item>
+        </mat-list-item>
+        
+      </mat-list>
+    </form>
+    <app-all-lists-table [lists]="lists"></app-all-lists-table>
+  </mat-card-content>
   </mat-card>

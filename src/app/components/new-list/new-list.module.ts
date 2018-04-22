@@ -1,7 +1,7 @@
 import {NewListComponent} from './new-list.component';
 import { MaterialModule } from '../../../material/material.module';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { NgModule } from '@angular/core';
 
@@ -12,7 +12,8 @@ import { NgModule } from '@angular/core';
     imports: [
         MaterialModule,
         BrowserModule,
-        FormsModule
+        FormsModule,
+        ReactiveFormsModule
     ]
 })
 export class NewListModule {}

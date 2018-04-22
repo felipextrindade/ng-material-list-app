@@ -15,7 +15,9 @@ import {
     MatTooltipModule,
     MatSelectModule,
     MatSidenavModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatTableModule,
+    MatSortModule
   } from '@angular/material';
   import {NgModule} from '@angular/core';
 
@@ -37,7 +39,9 @@ import {
       MatDialogModule,
       MatSelectModule,
       MatSidenavModule,
-      MatToolbarModule
+      MatToolbarModule,
+      MatTableModule,
+      MatSortModule
     ],
     exports: [
       MatButtonModule,
@@ -56,7 +60,9 @@ import {
       MatDialogModule,
       MatSelectModule,
       MatSidenavModule,
-      MatToolbarModule
+      MatToolbarModule,
+      MatTableModule,
+      MatSortModule
     ],
   })
 

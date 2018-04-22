@@ -1,4 +1,4 @@
 export interface List {
-    typeId: number;
+    typeId?: number;
     name: string;
 }

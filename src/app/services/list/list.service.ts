@@ -11,4 +11,7 @@ export class ListService {
       return this.http.post(`${AppConfig.rootUrl}/Lists/saveList`, list);
   }
 
+  public getAllListsByType(typeId) {
+    return this.http.get(`${AppConfig.rootUrl}/Lists/byTypeId/${typeId}`);
+  }
 }

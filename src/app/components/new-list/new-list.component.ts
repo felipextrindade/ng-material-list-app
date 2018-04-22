@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {FormControl, Validators, FormGroup} from '@angular/forms';
 import {MatSnackBar} from '@angular/material';
+
+
 import { CategoryService, ListService } from '../../services';
 import { Category, List } from '../../model';
 
@@ -12,18 +15,22 @@ import { Category, List } from '../../model';
 export class NewListComponent implements OnInit {
 
   private categories: Category[];
-  private newList: List;
+
+  private newList: List = {
+    name: '',
+    typeId: null
+  };
+
+  private listForm = new FormGroup({
+    listName: new FormControl('', [Validators.required]),
+    listType: new FormControl('', [Validators.required])
+  });
 
   constructor(
     private categoryService: CategoryService,
     private listService: ListService,
     private snackBar: MatSnackBar
-  ) {
-    this.newList = {
-      typeId: 0,
-      name: ''
-    };
-  }
+  ) {}
 
   ngOnInit() {
     this.categoryService.getCategories().forEach(data => {

@@ -1,3 +1,13 @@
-<p>
-  all-lists-table works!
-</p>
+<table matSort (matSortChange)="sortData($event)">
+    <tr>
+      <th mat-sort-header="typeId">Tipo</th>
+      <th mat-sort-header="typeName">Nome do tipo</th>
+      <th mat-sort-header="name">Nome da Lista</th>
+    </tr>
+
+    <tr *ngFor="let list of sortedData">
+        <td>{{list.typeId}}</td>
+        <td>{{getTypeName(list.typeId)}}</td>
+        <td>{{list.name}}</td>
+    </tr>
+  </table>

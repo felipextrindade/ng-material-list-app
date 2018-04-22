@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryService, ListService } from '../../services';
 import { Category, List } from '../../model';
+import {isEmpty} from 'lodash';
 
 @Component({
   selector: 'app-all-lists',
@@ -19,6 +20,7 @@ export class AllListsComponent implements OnInit {
   constructor(categoryService: CategoryService, listService: ListService) {
       this.categoryService = categoryService;
       this.listService = listService;
+      this.lists = [];
   }
 
   ngOnInit() {
@@ -32,6 +34,26 @@ export class AllListsComponent implements OnInit {
   }
 
   private searchCategory() {
-    console.log(this.categoryId);
+    console.log('Calling search!');
+    this.listService.getAllListsByType(this.categoryId).forEach( data => {
+      this.handleLists(data);
+    }).catch(err => {
+      throw err;
+    });
+  }
+
+  private handleLists(data) {
+    if (!isEmpty(data)) {
+      this.lists = data;
+      console.log('não é vazio');
+    } else {
+      console.log('é vazio');
+      this.lists = [
+        {typeId: 1, name: 'Minha lista'},
+        {typeId: 2, name: 'Lista de presentes'},
+        {typeId: 3, name: 'A orçar'},
+        {typeId: 3, name: 'Lista de venda'}
+      ];
+    }
   }
 }
