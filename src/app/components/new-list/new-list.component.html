@@ -1,0 +1,32 @@
+<div class="align">
+<mat-card class="new-list-card">
+  <mat-card-header>
+      <mat-card-title><h2>Crie uma lista</h2></mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form class="category-form">
+      <mat-list role="list">
+        <mat-list-item role="listitem">
+          <mat-form-field>
+            <input matInput placeholder="Nome da lista" [(ngModel)]="newList.name" name="listName" #listName="ngModel">
+          </mat-form-field>
+        </mat-list-item>
+
+        <mat-list-item role="listitem">
+          <mat-form-field>
+            <mat-select placeholder="Categoria" [(ngModel)]="newList.typeId" name="listType" listType="ngModel">
+              <mat-option *ngFor="let category of categories" [value]="category.id">
+                {{ category.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-list-item>
+
+        <mat-list-item role="listitem">
+            <button mat-raised-button color="primary" (click)="saveList()">Enviar</button>
+        </mat-list-item>
+      </mat-list>
+    </form>
+  </mat-card-content>
+</mat-card>

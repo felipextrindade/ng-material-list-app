@@ -1,0 +1,25 @@
+<div style="position:absolute;top:0;left:0;right:0;bottom:0;">
+  <mat-sidenav-container #sidenav style="height:100%;width:100%;">
+    <mat-sidenav mode="side" #sidenav style="min-width:220px;">
+        <mat-list role="list">
+            <mat-list-item role="listitem">
+              <a routerLink="" routerLinkActive="active">Nova lista</a>
+            </mat-list-item>
+            <mat-list-item role="listitem">
+              <a routerLink="lists" routerLinkActive="active">Todas as listas</a>
+            </mat-list-item>
+          </mat-list>
+    </mat-sidenav>
+    <mat-toolbar color="primary" style="min-height:64px;">
+      <span>
+        <button style="background-color:transparent;border-style:none;cursor:pointer;" (click)="sidenav.toggle()">
+          <i class="material-icons toolbar-link-icon" style="color:white;">menu</i>
+        </button>
+      </span>
+      <span>Lista de afazeres</span>
+    </mat-toolbar>
+    <div class="inner-sidenav-content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-container>
+</div>

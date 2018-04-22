@@ -1,0 +1,32 @@
+<div class="align">
+  <mat-card class="all-lists-card">
+    <mat-card-header>
+      <h2>Todas as listas</h2>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form class="category-form">
+        <mat-list role="list">
+
+          <mat-list-item role="listitem">
+            <h4>Escolha uma categoria de lista</h4>
+          </mat-list-item>
+
+          <mat-list-item role="listitem">
+            <mat-form-field>
+              <mat-select placeholder="Categoria" [(ngModel)]="categoryId" (ngModelChange)="searchCategory()" name="list-type">
+                <mat-option *ngFor="let category of categories" [value]="category.id">
+                  {{ category.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-list-item>
+
+          <mat-list-item role="listitem">
+            <app-all-lists-table></app-all-lists-table>
+          </mat-list-item>
+
+        </mat-list>
+      </form>
+    </mat-card-content>
+  </mat-card>

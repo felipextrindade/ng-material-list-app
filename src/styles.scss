@@ -1,0 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/theming';
+@import  'palette';
+
+@include mat-core();
+
+$list-app-primary: mat-palette($md-greenpalette);
+$list-app-accent:  mat-palette($md-yellowpalette, A200, A100, A400);
+$list-app-warn:    mat-palette($mat-red);
+
+$list-app-theme: mat-light-theme($list-app-primary, $list-app-accent, $list-app-warn);
+
+@include angular-material-theme($list-app-theme);
