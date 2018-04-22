@@ -1,7 +1,12 @@
-import { Component, OnInit, OnChanges} from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { Input } from '@angular/core';
-import { List } from '../../../model';
 import { Sort } from '@angular/material';
+import { MatDialogModule } from '@angular/material/dialog';
+import {MatSnackBar} from '@angular/material';
+import {remove} from 'lodash';
+
+import { List } from '../../../model';
+import { ListService } from '../../../services';
 
 @Component({
   selector: 'app-all-lists-table',
@@ -14,9 +19,10 @@ export class AllListsTableComponent implements OnInit, OnChanges {
 
   private sortedData: List[];
 
-  constructor() {
-
-  }
+  constructor(
+    private dialog: MatDialogModule,
+    private listService: ListService,
+    private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.sortedData = this.lists.slice();
@@ -36,12 +42,13 @@ export class AllListsTableComponent implements OnInit, OnChanges {
     this.sortedData = data.sort((a, b) => {
       const isAsc = sort.direction === 'asc';
       switch (sort.active) {
-        case 'typeId': return this.compare(a.typeId, b.typeId, isAsc);
+        case 'id': return this.compare(a.typeId, b.typeId, isAsc);
         case 'name': return this.compare(a.name, b.name, isAsc);
         case 'typeName': return this.compare(
-                  this.getTypeName(a.typeId),
-                  this.getTypeName(b.typeId), isAsc
+          this.getTypeName(a.typeId),
+          this.getTypeName(b.typeId), isAsc
         );
+        case 'status': return this.compare(a.status, b.status, isAsc);
         default: return 0;
       }
     });
@@ -58,6 +65,24 @@ export class AllListsTableComponent implements OnInit, OnChanges {
       default:
         return 'Desconhecido';
     }
+  }
+
+  deleteList(listId) {
+    this.listService.deleteList(listId).forEach(response => {
+      this.handleDelete(listId);
+    }).catch(err => {
+      this.snackBar.open('Aconteceu um erro! Por favor, tente de novo.', 'Fechar');
+      throw err;
+    });
+  }
+
+  handleDelete(listId) {
+    this.sortedData = remove(this.sortedData, (list) => {
+        return list.id !== listId;
+    });
+
+    console.log(this.sortedData);
+    this.snackBar.open('Lista deletada com sucesso', 'Fechar');
   }
 
   compare(a, b, isAsc) {

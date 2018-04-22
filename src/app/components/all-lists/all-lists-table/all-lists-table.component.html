@@ -1,13 +1,19 @@
-<table matSort (matSortChange)="sortData($event)">
+<div class="all-list-table">
+  <table matSort (matSortChange)="sortData($event)">
     <tr>
-      <th mat-sort-header="typeId">Tipo</th>
-      <th mat-sort-header="typeName">Nome do tipo</th>
+      <th mat-sort-header="id">Id</th>
+      <th mat-sort-header="typeName">Tipo</th>
       <th mat-sort-header="name">Nome da Lista</th>
+      <th mat-sort-header="status">Status</th>
+      <th mat-header="name">Apagar lista</th>
     </tr>
 
     <tr *ngFor="let list of sortedData">
-        <td>{{list.typeId}}</td>
-        <td>{{getTypeName(list.typeId)}}</td>
-        <td>{{list.name}}</td>
+      <td>{{list.id}}</td>
+      <td>{{getTypeName(list.typeId)}}</td>
+      <td>{{list.name}}</td>
+      <td>{{list.status}}</td>
+      <td><button mat-button color="warn" (click)="deleteList(list.id)">Deletar</button></td>
     </tr>
   </table>
+</div>

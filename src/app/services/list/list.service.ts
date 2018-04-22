@@ -14,4 +14,8 @@ export class ListService {
   public getAllListsByType(typeId) {
     return this.http.get(`${AppConfig.rootUrl}/Lists/byTypeId/${typeId}`);
   }
+
+  public deleteList(listId) {
+    return this.http.get(`${AppConfig.rootUrl}/Lists/removeListAndItems/${listId}`);
+  }
 }

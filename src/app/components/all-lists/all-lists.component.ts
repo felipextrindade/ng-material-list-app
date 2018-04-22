@@ -45,14 +45,13 @@ export class AllListsComponent implements OnInit {
   private handleLists(data) {
     if (!isEmpty(data)) {
       this.lists = data;
-      console.log('não é vazio');
     } else {
-      console.log('é vazio');
+      // For mock purposes
       this.lists = [
-        {typeId: 1, name: 'Minha lista'},
-        {typeId: 2, name: 'Lista de presentes'},
-        {typeId: 3, name: 'A orçar'},
-        {typeId: 3, name: 'Lista de venda'}
+        {typeId: 1, name: 'Minha lista', id: 1, status: 1},
+        {typeId: 2, name: 'Lista de presentes', id: 2, status: 1},
+        {typeId: 3, name: 'A orçar', id: 3, status: 1},
+        {typeId: 3, name: 'Lista de venda', id: 4, status: 1}
       ];
     }
   }
