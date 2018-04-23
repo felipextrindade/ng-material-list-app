@@ -1,6 +1,6 @@
 # MaterialTodo
 
-Projeto teste Angular - criação de lista de tarefas (Em progresso).
+Projeto teste Angular - criação de lista de tarefas.
 
 Esse projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli) versão 1.7.4.
 
