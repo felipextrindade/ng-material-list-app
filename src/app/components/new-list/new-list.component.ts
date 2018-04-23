@@ -44,7 +44,6 @@ export class NewListComponent implements OnInit {
 
   private saveList() {
     this.listService.postList(this.newList).forEach( response => {
-      console.log(response);
       this.snackBar.open('Lista criada com sucesso!', 'X');
     }).catch(err => {
       // Mock created due to CORS error in endpoint.

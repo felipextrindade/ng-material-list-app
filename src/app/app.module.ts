@@ -13,13 +13,19 @@ import { FormsModule } from '@angular/forms';
 
 import {AllListsModule} from './components/all-lists/all-lists.module';
 import {NewListModule} from './components/new-list/new-list.module';
+import {NewItemModule} from './components/new-item/new-item.module';
+import {ListItemsModule} from './components/list-items/list-items.module';
 
 import { NewListComponent } from './components/new-list/new-list.component';
 import { AllListsComponent } from './components/all-lists/all-lists.component';
+import { NewItemComponent } from './components/new-item/new-item.component';
+import { ListItemsComponent } from './components/list-items/list-items.component';
 
 const appRoutes: Routes = [
   { path: '', component: NewListComponent},
   { path: 'lists', component: AllListsComponent},
+  { path: 'new-item', component: NewItemComponent},
+  { path: 'list/:id', component: ListItemsComponent}
 ];
 
 
@@ -37,7 +43,9 @@ const appRoutes: Routes = [
       appRoutes,
     ),
     AllListsModule,
-    NewListModule
+    NewListModule,
+    NewItemModule,
+    ListItemsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -3,13 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
-import {AllListsComponent} from './all-lists.component';
-import { AllListsTableComponent } from './all-lists-table/all-lists-table.component';
+import {ListItemsComponent} from './list-items.component';
 
 @NgModule({
     declarations: [
-        AllListsComponent,
-        AllListsTableComponent
+        ListItemsComponent,
     ],
     imports: [
         MaterialModule,
@@ -17,6 +15,4 @@ import { AllListsTableComponent } from './all-lists-table/all-lists-table.compon
         FormsModule
     ]
 })
-export class AllListsModule {}
-
-
+export class ListItemsModule {}

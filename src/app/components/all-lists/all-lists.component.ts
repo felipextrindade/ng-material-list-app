@@ -34,7 +34,6 @@ export class AllListsComponent implements OnInit {
   }
 
   private searchCategory() {
-    console.log('Calling search!');
     this.listService.getAllListsByType(this.categoryId).forEach( data => {
       this.handleLists(data);
     }).catch(err => {

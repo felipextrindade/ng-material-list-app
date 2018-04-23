@@ -1,0 +1,33 @@
+<div class="align">
+  <mat-card class="all-items-card">
+    <mat-card-header>
+      <mat-card-title>
+        <h2>{{listData.name}} - {{listData.typeName || 'Tipo desconhecido'}}</h2>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <h2 *ngIf="!hasItems">Não há itens =(</h2>
+      <div *ngIf="hasItems">
+        <div class="all-items-table">
+          <table matSort (matSortChange)="sortData($event)">
+            <tr>
+              <th mat-sort-header="id">Id</th>
+              <th mat-sort-header="name">Nome do Item</th>
+              <th mat-sort-header="status">Status</th>
+              <th mat-header="delete">Apagar item</th>
+            </tr>
+
+            <tr *ngFor="let item of sortedData">
+              <td>{{item.id}}</td>
+              <td>{{item.name}}</td>
+              <td>{{item.status}}</td>
+              <td>
+                <button mat-button color="warn" (click)="deleteItem(list.id)">Deletar</button>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

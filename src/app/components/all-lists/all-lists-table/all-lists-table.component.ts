@@ -1,9 +1,9 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { Sort } from '@angular/material';
-import { MatDialogModule } from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material';
-import {remove} from 'lodash';
+import {remove, isEmpty} from 'lodash';
 
 import { List } from '../../../model';
 import { ListService } from '../../../services';
@@ -18,18 +18,28 @@ export class AllListsTableComponent implements OnInit, OnChanges {
   @Input() private lists: List[];
 
   private sortedData: List[];
+  private hasLists: Boolean = false;
 
   constructor(
-    private dialog: MatDialogModule,
     private listService: ListService,
-    private snackBar: MatSnackBar) { }
+    private snackBar: MatSnackBar,
+    private router: Router
+  ) { }
 
   ngOnInit() {
-    this.sortedData = this.lists.slice();
+    if (!isEmpty(this.lists)) {
+      this.hasLists = true;
+      this.sortedData = this.lists.slice();
+    }
   }
 
   ngOnChanges(changes: any) {
-    this.sortedData = changes.lists.currentValue;
+    if (!isEmpty(changes.lists.currentValue)) {
+      this.hasLists = true;
+      this.sortedData = changes.lists.currentValue;
+    } else {
+      this.hasLists = false;
+    }
   }
 
   sortData(sort: Sort) {
@@ -76,12 +86,14 @@ export class AllListsTableComponent implements OnInit, OnChanges {
     });
   }
 
+  listDetail(listId, listName) {
+    this.router.navigateByUrl(`list/${listId}`);
+  }
+
   handleDelete(listId) {
     this.sortedData = remove(this.sortedData, (list) => {
         return list.id !== listId;
     });
-
-    console.log(this.sortedData);
     this.snackBar.open('Lista deletada com sucesso', 'Fechar');
   }
 
