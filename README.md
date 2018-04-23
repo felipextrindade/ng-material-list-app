@@ -1,4 +1,4 @@
-# MaterialTodo
+# ng-material-list-app
 
 Projeto teste Angular - criação de lista de tarefas.
 
